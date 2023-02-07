@@ -18,6 +18,15 @@ const Next = ({ ...props }) => (
     />
 );
 
+const Done = ({ ...props }) => (
+    <Button
+        title="Done"
+        color="#000000"
+        {...props}
+    />
+);
+
+
 
 
 
@@ -28,6 +37,7 @@ const OnboardingScreen = ({navigation}) => {
           onDone={() => navigation.navigate("Login")}
           SkipButtonComponent={Skip}
           NextButtonComponent={Next}
+          DoneButtonComponent={Done}
 
           
           pages={[
