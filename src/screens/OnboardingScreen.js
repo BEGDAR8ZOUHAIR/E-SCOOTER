@@ -46,22 +46,22 @@ const OnboardingScreen = ({navigation}) => {
           
           pages={[
               {
-                  backgroundColor: '#FFEBCC',
-                  image: <Image source={require('../../assets/esccoter2.png')} />,
-                  title: 'Onboarding',
-                  subtitle: 'Done with React Native Onboarding Swiper',
-              },
-              {
-                  backgroundColor: '#a6e4d0',
+                  backgroundColor: '#fff',
                   image: <Image source={require('../../assets/esccoter1.png')} />,
-                  title: 'The Title',
-                  subtitle: 'This is the subtitle that sumplements the title.',
+                  title: 'E-Scooter',
+                  subtitle: 'The best app for renting electric scooters ',
               },
               {
-                  backgroundColor: '#fdeb93',
+                  backgroundColor: '#fff',
+                  image: <Image source={require('../../assets/esccoter2.png')} />,
+                  title: 'Find Scooters',
+                  subtitle: 'Find the nearest scooters to your',
+              },
+              {
+                  backgroundColor: '#fff',
                   image: <Image source={require('../../assets/esccoter3.png')} />,
-                  title: 'Triangle',
-                  subtitle: "Beautiful, isn't it?",
+                  title: 'Book Scooters',
+                  subtitle: "Book your scooter in just a few clicks",
               },
           ]}
           
