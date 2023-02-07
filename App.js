@@ -10,10 +10,10 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        headerMode="none"
-      >
-        <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+      <Stack.Navigator screenOptions={{
+        headerMode: 'none'
+      }} >
+        <Stack.Screen name="Onboarding"  component={OnboardingScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
       </Stack.Navigator>
     </NavigationContainer>
