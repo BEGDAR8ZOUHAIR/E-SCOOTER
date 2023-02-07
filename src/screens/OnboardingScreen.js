@@ -1,29 +1,33 @@
 import React from 'react'
-import { View, Text, Button, Image,StyleSheet } from 'react-native'
+import { View, Text, Button, Image,StyleSheet , TouchableOpacity } from 'react-native'
 
 import Onboarding from 'react-native-onboarding-swiper';
 
 const Skip = ({ ...props }) => (
-    <Button
-        title="Skip"
-        color="#000000"
+    <TouchableOpacity
+        style={{ marginHorizontal: 10 }}
         {...props}
-    />
+    >
+        <Text style={{ fontSize: 16 }}>Skip</Text>
+    </TouchableOpacity>
+
 );
 const Next = ({ ...props }) => (
-    <Button
-        title="Next"
-        color="#000000"
+    <TouchableOpacity
+        style={{ marginHorizontal: 10 }}
         {...props}
-    />
+    >
+        <Text style={{ fontSize: 16 }}>Next</Text>
+    </TouchableOpacity>
 );
 
 const Done = ({ ...props }) => (
-    <Button
-        title="Done"
-        color="#000000"
+    <TouchableOpacity
+        style={{ marginHorizontal: 10 }}
         {...props}
-    />
+    >
+        <Text style={{ fontSize: 16 }}>Done</Text>
+    </TouchableOpacity>
 );
 
 
