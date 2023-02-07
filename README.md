@@ -21,6 +21,10 @@ npx create-expo-app your app
 ```
 npm run web
 ```
+## How to install  react native onboarding swiper
+```
+npm i react-native-onboarding-swiper
+```
 
 # Testing with Jest
 
