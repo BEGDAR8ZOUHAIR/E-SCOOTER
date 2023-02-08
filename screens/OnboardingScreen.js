@@ -47,19 +47,25 @@ const OnboardingScreen = ({navigation}) => {
           pages={[
               {
                   backgroundColor: '#fff',
-                  image: <Image source={require('../../assets/esccoter1.png')} />,
+                  image: <Image source={require('../assets/esccoter1.png')}
+                      style={{ width: 200, height: 200 }}
+                  />,
                   title: 'E-Scooter',
                   subtitle: 'The best app for renting electric scooters ',
               },
               {
                   backgroundColor: '#fff',
-                  image: <Image source={require('../../assets/esccoter2.png')} />,
+                  image: <Image source={require('../assets/esccoter2.png')}
+                      style={{ width: 200, height: 200 }}
+                  />,
                   title: 'Find Scooters',
                   subtitle: 'Find the nearest scooters to your',
               },
               {
                   backgroundColor: '#fff',
-                  image: <Image source={require('../../assets/esccoter3.png')} />,
+                  image: <Image source={require('../assets/esccoter3.png')}
+                      style={{ width: 200, height: 200 }}
+                  />,
                   title: 'Book Scooters',
                   subtitle: "Book your scooter in just a few clicks",
               },
