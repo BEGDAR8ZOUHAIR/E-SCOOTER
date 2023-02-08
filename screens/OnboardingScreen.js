@@ -1,14 +1,14 @@
 import React from 'react'
 import { View, Text, Button, Image,StyleSheet , TouchableOpacity } from 'react-native'
-
 import Onboarding from 'react-native-onboarding-swiper';
+
 
 const Skip = ({ ...props }) => (
     <TouchableOpacity
         style={{ marginHorizontal: 10 }}
         {...props}
     >
-        <Text style={{ fontSize: 16 }}>Skip</Text>
+        <Text style={styles.textStyle}>Skip</Text>
     </TouchableOpacity>
 
 );
@@ -17,7 +17,7 @@ const Next = ({ ...props }) => (
         style={{ marginHorizontal: 10 }}
         {...props}
     >
-        <Text style={{ fontSize: 16 }}>Next</Text>
+        <Text style={styles.textStyle}>Next</Text>
     </TouchableOpacity>
 );
 
@@ -26,12 +26,9 @@ const Done = ({ ...props }) => (
         style={{ marginHorizontal: 10 }}
         {...props}
     >
-        <Text style={{ fontSize: 16 }}>Done</Text>
+        <Text style={styles.textStyle}>Done</Text>
     </TouchableOpacity>
 );
-
-
-
 
 
 const OnboardingScreen = ({navigation}) => {
@@ -42,8 +39,9 @@ const OnboardingScreen = ({navigation}) => {
           SkipButtonComponent={Skip}
           NextButtonComponent={Next}
           DoneButtonComponent={Done}
-
           
+        
+        
           pages={[
               {
                   backgroundColor: '#fff',
@@ -82,5 +80,19 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
-    }
+    },
+    textStyle: {
+        fontSize: 16,
+        color: '#4E5153',
+        backgroundColor: '#92E3A9',
+        paddingHorizontal: 20,
+        paddingVertical: 5,
+        borderRadius: 20,
+    },
 })
+
+
+
+
+
+
