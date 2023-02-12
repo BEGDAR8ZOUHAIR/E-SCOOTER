@@ -25,7 +25,6 @@ const DashboardScreen = () => {
   }, []);
 
   return (
-    <ImageBackground source={require('../assets/bg.png')} style={styles.BgImage} resizeMode='cover'  >
   <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Dashboard</Text>
@@ -57,7 +56,6 @@ const DashboardScreen = () => {
         />
       </ScrollView>
     </View>
-    </ImageBackground>
   );
 };
 

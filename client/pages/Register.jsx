@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ImageBackground , } from 'react-native';
-// import {fetch} from 'react-native'
-import { useNavigation } from '@react-navigation/native';
 
-const RegisterScreen = () => {
-    const navigation = useNavigation();
-    const [nom, setNom] = useState('');
-    const [prenom, setPrenom] = useState('');
-    const [email, setEmail] = useState('');
+import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+} from "react-native";
+
+const Register = () => {
+  const navigation = useNavigation();
+      const [userName, setUserName] = useState('');
+      const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
 
-    const handleRegister = async () => {
-        try {
+    const handleRegister = async () =>
+    {
+       try {
             const res = await fetch("http://192.168.10.37:5000/auth/register", {
                 method: "POST",
                 headers: {
@@ -36,91 +44,91 @@ const RegisterScreen = () => {
         } catch (err) {
             console.log(err);
         }
-    };
+  };
 
-    return (
-        <ImageBackground source={require('../assets/bg.png')} style={styles.container} resizeMode='cover'  >
-            <View style={styles.container}>
-                <Image
-                    style={styles.logo}
-                    source={require('../assets/REGISTER.png')}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Username"
-                    value={nom}
-                    onChangeText={setNom}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Prenom"
-                    value={prenom}
-                    onChangeText={setPrenom}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="email"
-                    value={email}
-                    onChangeText={setEmail}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder=" Password"
-                    secureTextEntry={true}
-                    value={password}
-                    onChangeText={setPassword}
-                />
-                <TouchableOpacity style={styles.button} onPress={handleRegister}>
-                    <Text style={styles.buttonText}>Register</Text>
-                </TouchableOpacity>
-            </View>
-        </ImageBackground>
-    );
+  return (
+    <View style={styles.container}>
+      <Image
+        style={{ width: 150, height: 150 }}
+        source={require("../assets/esccoter1.png")}
+      />
+
+      <Text style={styles.title}>Register</Text>
+      <View style={styles.formContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          keyboardType=""
+          autoCapitalize="none"
+          value={userName}
+          onChangeText={setUserName}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry={true}
+          value={password}
+          onChangeText={setPassword}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+          secureTextEntry={true}
+          value={password2}
+          onChangeText={setPassword2}
+        />
+
+        <TouchableOpacity style={styles.button} onPress={handleRegister}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    container: {
+  container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-    },
-    BgImage: {
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center"
-    },
-    logo: {
-    width: 140,
-    height: 100,
-    resizeMode: 'contain',
-    marginBottom: 20,
-    },
-    input: {
-    width: '100%',
-    height: 40, // augmenter la hauteur de l'élément
-    padding: 10,
-    marginBottom: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    borderRadius: 5,
-    color: 'white',
-    fontSize: 20, // augmenter la taille de la police
-    fontWeight: 'bold',
-    },
-    button: {
-    width: '100%',
-    height: 50,
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 5,
-    marginTop: 20,
-    },
-    buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 18,
-    },
-    });
-    
-    export default RegisterScreen;
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 48,
+  },
+  formContainer: {
+    width: "85%",
+  },
+  input: {
+    height: 45,
+    backgroundColor: "#F9F9F9",
+    marginBottom: 16,
+    paddingHorizontal: 16,
+    borderRadius: 4,
+  },
+  button: {
+    height: 45,
+    backgroundColor: "#92E3A9",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+  },
+  buttonText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+});
+
+export default Register;
+
+
