@@ -17,10 +17,10 @@ const LoginScreen = () => {
 
     const handleLogin = async () => {
       try {
-        const response = await fetch('http://192.168.10.37:5000/auth/login', {
-          method: 'POST',
+        const response = await fetch("http://localhost:5000/client/login", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ email, password }),
         });

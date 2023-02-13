@@ -20,19 +20,18 @@ const Register = () => {
     const handleRegister = async () =>
     {
        try {
-            const res = await fetch("http://192.168.10.37:5000/auth/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify({
-
-                    nom,
-                    prenom,
-                    email,
-                    password
-                })
+            const res = await fetch("http://localhost:5000/client/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify({
+                nom,
+                prenom,
+                email,
+                password,
+              }),
             });
             const data = await res.json();
             if (data.error) {

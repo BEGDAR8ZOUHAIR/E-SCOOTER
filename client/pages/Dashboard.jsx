@@ -60,7 +60,6 @@
 // };
 
 
-
 import React, { useState } from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -121,10 +120,4 @@ const styles = StyleSheet.create({
 });
 
 export default DashboardScreen;
-
-
-
-
-
-
 

@@ -13,7 +13,7 @@ const registerClient = asyncHandler(async (req, res) =>
   
 
   //   check if any of the fields are empty
-  if (!fullName || !email || !password ||!phoneNumber)
+  if (!fullName || !email || !password )
   {
     res.status(400);
     throw new Error("Please fill in all fields");
@@ -36,7 +36,6 @@ const registerClient = asyncHandler(async (req, res) =>
   const client = await Client.create({
     fullName,
     email,
-    phoneNumber,
     password: hashedPassword,
     token: generateToken(),
   });
