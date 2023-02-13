@@ -51,7 +51,7 @@ const LoginScreen = () => {
           keyboardType="email-address"
           autoCapitalize="none"
           value={email}
-          onChangeText={setEmail}
+          onChangeText={(text) => setEmail(text)}
         />
       </View>
       <View style={styles.formContainer}>
@@ -61,10 +61,15 @@ const LoginScreen = () => {
           placeholder="Password"
           secureTextEntry={true}
           value={password}
-          onChangeText={setPassword}
+          onChangeText={(text) => setPassword(text)}
         />
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+          <Text style={styles.registerText}>
+            Don't have an account? <Text style={styles.registerLink}> Register now</Text>
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -108,6 +113,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     justifyContent: "center",
     alignItems: "center",
+  },
+  registerText: {
+    marginTop: 16,
+    textAlign: "center",
+  },
+  registerLink: {
+    color: "#92E3A9",
+    fontWeight: "bold",
   },
  
 });
