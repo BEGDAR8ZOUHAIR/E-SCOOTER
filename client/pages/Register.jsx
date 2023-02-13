@@ -61,7 +61,7 @@ const Register = () => {
           keyboardType=""
           autoCapitalize="none"
           value={userName}
-          onChangeText={setUserName}
+          onChangeText={(text) => setUserName(text)}
         />
         <TextInput
           style={styles.input}
@@ -69,26 +69,27 @@ const Register = () => {
           keyboardType="email-address"
           autoCapitalize="none"
           value={email}
-          onChangeText={setEmail}
+          onChangeText={(text) => setEmail(text)}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
           secureTextEntry={true}
           value={password}
-          onChangeText={setPassword}
+          onChangeText={(text) => setPassword(text)}
         />
         <TextInput
           style={styles.input}
           placeholder="Confirm Password"
           secureTextEntry={true}
           value={password2}
-          onChangeText={setPassword2}
+          onChangeText={(text) => setPassword2(text)}
         />
 
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
+       
       </View>
     </View>
   );
