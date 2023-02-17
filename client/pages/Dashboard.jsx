@@ -71,8 +71,9 @@ const ScooterCard = ({ scooter }) => {
       <Text style={styles.cardText}>{scooter.serialNumber}</Text>
       <Text style={styles.cardText}>{scooter.latitude}</Text>
       <Text style={styles.cardText}>{scooter.longitude}</Text>
-      <Text style={styles.cardText}>{scooter.battery}</Text>
-      <Text style={styles.cardText}>{scooter.status}</Text>
+      <Text style={styles.cardBattery}>{scooter.battery}</Text>
+
+      <Text style={styles.cardStatus}>{scooter.status}</Text>
       <TouchableOpacity style={styles.reserveButton}>
         <Text style={styles.buttonText}>Reserve Now</Text>
       </TouchableOpacity>
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
 
-    backgroundColor: "#000",
+    backgroundColor: "#3ED400",
 
     padding: 20,
   },
@@ -109,6 +110,14 @@ const styles = StyleSheet.create({
   },
   cardText: {
     marginBottom: 10,
+  },
+  cardBattery: {
+    marginBottom: 10,
+    color: "#3ED400",
+  },
+  cardStatus: {
+    marginBottom: 10,
+    color: "tomato",
   },
   reserveButton: {
     backgroundColor: "#000",
