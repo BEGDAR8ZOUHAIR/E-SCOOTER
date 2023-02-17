@@ -29,19 +29,17 @@ const LoginScreen = () => {
               password,
             }),
           });
-          const data = await res.json();
+          const text = await res.text();
+          const data = JSON.parse(text);
+
           if (data.error) {
             Alert.alert("Error", data.error, [{ text: "OK" }]);
-          } else
-          {
-            
+          } else {
             navigation.navigate("Home");
           }
-        } catch (err)
-        {
-          
+        } catch (err) {
           console.log(err);
-      }           
+        }            
     };
 
   return (

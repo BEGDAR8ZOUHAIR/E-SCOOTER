@@ -19,7 +19,8 @@ const DashboardScreen = () => {
   const loadScooters = async () => {
     try {
       const response = await fetch("http://192.168.9.30:5000/client/scooters");
-      const data = await response.json();
+      const text = await response.text();
+      const data = JSON.parse(text);
       setScooters(data);
       setIsLoading(false);
     } catch (error) {
@@ -52,7 +53,15 @@ const DashboardScreen = () => {
         {isLoading ? (
           <Text style={styles.loadingText}>Loading...</Text>
         ) : (
-          <ScrollView style={styles.scrollView}>
+          <ScrollView
+            style={styles.scrollView}
+            ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+            ListEmptyComponent={() => (
+              <View style={{ alignItems: "center", justifyContent: "center" }}>
+                <Text>No items to display</Text>
+              </View>
+            )}
+          >
             {scooters.map((scooter) => (
               <ScooterCard key={scooter.id} scooter={scooter} />
             ))}
@@ -71,9 +80,12 @@ const ScooterCard = ({ scooter }) => {
       <Text style={styles.cardText}>{scooter.serialNumber}</Text>
       <Text style={styles.cardText}>{scooter.latitude}</Text>
       <Text style={styles.cardText}>{scooter.longitude}</Text>
-      <Text style={styles.cardBattery}>{scooter.battery}</Text>
-
-      <Text style={styles.cardStatus}>{scooter.status}</Text>
+      <Text style={parseInt(scooter.battery) > 20 ? styles.success : styles.failed }>{scooter.battery}</Text>
+      <Text
+        style={scooter.status === "Desponible" ? styles.success : styles.failed}
+      >
+        {scooter.status}
+      </Text>
       <TouchableOpacity style={styles.reserveButton}>
         <Text style={styles.buttonText}>Reserve Now</Text>
       </TouchableOpacity>
@@ -115,9 +127,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: "#3ED400",
   },
-  cardStatus: {
+  success: {
     marginBottom: 10,
-    color: "tomato",
+    color: "#3ED400",
+  },
+  failed: {
+    marginBottom: 10,
+    color: "#FF0000",
   },
   reserveButton: {
     backgroundColor: "#000",

@@ -7,7 +7,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchMarkers() {
-      const response = await fetch('http://192.168.10.37:5000/scouter/getScouter');
+      const response = await fetch("http://192.168.9.30:5000/client/scooters");
       const data = await response.json();
       setMarkers(data);
     }

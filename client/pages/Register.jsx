@@ -34,17 +34,20 @@ const Register = () => {
                 }),
               }
             );
-            const data = await res.json();
-            if (data.error) {
-                // Afficher un message d'erreur si l'enregistrement échoue
-                console.log(data.error);
-            } else {
-                // Naviguer vers la page d'accueil de l'application si l'enregistrement réussi
-                navigation.navigate('Home');
-            }
-        } catch (err) {
-            console.log(err);
-        }
+         const text = await res.text();
+         const data = JSON.parse(text);
+         if (data.error)
+         {
+            Alert.alert("Error", data.error, [{ text: "OK" }]);
+         } else
+         {
+            navigation.navigate("Login");
+         }
+       } catch (err)
+       {
+         
+          console.log(err);
+      }      
   };
 
   return (
