@@ -1,7 +1,7 @@
 {
-  "name": "credit-de-maroc",
+  "name": "escooter",
   "version": "1.0.0",
-  "description": "build a modern website for NamX company to showcase their products and services to users and include a back office for administrators to manage pre-orders.",
+  "description": "E-scooter rental app",
   "main": "server.js",
   "scripts": {
     "start": "node api/server.js ",

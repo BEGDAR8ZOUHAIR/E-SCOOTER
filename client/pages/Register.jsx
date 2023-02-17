@@ -11,31 +11,33 @@ import {
 } from "react-native";
 
 const Register = () => {
-  const navigation = useNavigation();
-      const [userName, setUserName] = useState('');
-      const [email, setEmail] = useState('');
+    const navigation = useNavigation();
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [password2, setPassword2] = useState('');
 
     const handleRegister = async () =>
     {
        try {
-            const res = await fetch("http://localhost:5000/client/register", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-              },
-              body: JSON.stringify({
-                nom,
-                prenom,
-                email,
-                password,
-              }),
-            });
+            const res = await fetch(
+              "http://192.168.9.30:5000/client/register",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: JSON.stringify({
+                  fullName,
+                  email,
+                  password,
+                }),
+              }
+            );
             const data = await res.json();
             if (data.error) {
-              alert(data.error);
+                // Afficher un message d'erreur si l'enregistrement échoue
+                console.log(data.error);
             } else {
                 // Naviguer vers la page d'accueil de l'application si l'enregistrement réussi
                 navigation.navigate('Home');
@@ -56,11 +58,11 @@ const Register = () => {
       <View style={styles.formContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Username"
+          placeholder="Full Name"
           keyboardType=""
           autoCapitalize="none"
-          value={userName}
-          onChangeText={(text) => setUserName(text)}
+          value={fullName}
+          onChangeText={(text) => setFullName(text)}
         />
         <TextInput
           style={styles.input}
@@ -77,16 +79,9 @@ const Register = () => {
           value={password}
           onChangeText={(text) => setPassword(text)}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Confirm Password"
-          secureTextEntry={true}
-          value={password2}
-          onChangeText={(text) => setPassword2(text)}
-        />
 
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>
         <Text style={styles.registerText}>

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const scooterSchema = mongoose.Schema(
+const scooterchema = mongoose.Schema(
   {
     name: {
       type: String,

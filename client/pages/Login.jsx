@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  Alert,
 } from "react-native";
 
 const LoginScreen = () => {
@@ -16,23 +17,31 @@ const LoginScreen = () => {
   const navigation = useNavigation();
 
     const handleLogin = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/client/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        });
-        const data = await response.json();
-        if (data.error) {
-          alert(data.error);
-        } else {
-          navigation.navigate('Home');
-        }
-      } catch (error) {
-        console.error(error);
-      }
+        try {
+          const res = await fetch("http://192.168.9.30:5000/client/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              email,
+              password,
+            }),
+          });
+          const data = await res.json();
+          if (data.error) {
+            Alert.alert("Error", data.error, [{ text: "OK" }]);
+          } else
+          {
+            
+            navigation.navigate("Home");
+          }
+        } catch (err)
+        {
+          
+          console.log(err);
+      }           
     };
 
   return (
@@ -51,7 +60,7 @@ const LoginScreen = () => {
           keyboardType="email-address"
           autoCapitalize="none"
           value={email}
-          onChangeText={(text) => setEmail(text)}
+          onChangeText={setEmail}
         />
       </View>
       <View style={styles.formContainer}>
@@ -61,7 +70,7 @@ const LoginScreen = () => {
           placeholder="Password"
           secureTextEntry={true}
           value={password}
-          onChangeText={(text) => setPassword(text)}
+          onChangeText={setPassword}
         />
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Login</Text>

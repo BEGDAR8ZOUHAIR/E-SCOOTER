@@ -12,17 +12,16 @@
 //   const [users, setUsers] = useState([]);
 //   const [loading, setLoading] = useState(true);
 
-//   // useEffect(() => {
-//   //   fetch('http://192.168.10.37:5000/scouter/getScouter')
-//   //     .then((response) => response.json())
-//   //     .then((json) => {
-//   //       setUsers(json);
-//   //       setLoading(false);
-//   //     }
-//   //     )
-//   //     .catch((error) => console.error(error))
-//   //     .finally(() => setLoading(false));
-//   // }, []);
+//   useEffect(() => {
+//     fetch("http://192.168.9.30:5000/client/scooters")
+//       .then((response) => response.json())
+//       .then((json) => {
+//         setUsers(json);
+//         setLoading(false);
+//       })
+//       .catch((error) => console.error(error))
+//       .finally(() => setLoading(false));
+//   }, []);
 
 //   return (
 //   <View style={styles.container}>
@@ -58,17 +57,49 @@
 //     </View>
 //   );
 // };
+    // const navigation = useNavigation();
+    // const [users, setUsers] = useState([]);
+    // const [loading, setLoading] = useState(true);
+
+ 
 
 
-import React, { useState } from "react";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  FlatList,
+  ScrollView,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native";
-import { Icon } from "react-native-elements";
+import { Card, ListItem, Button, Icon } from "react-native-elements";
 
-const DashboardScreen = () => {
+const DashboardScreen = () =>
+{
   const navigation = useNavigation();
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const url = "http://192.168.9.30:5000/client/scooters";
+
+  useEffect(() =>
+  {
+    fetch(url)
+      .then((response) => response.json())
+      .then((json) =>
+      {
+        setUsers(json);
+        setLoading(false);
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, []);
+
+
 
   return (
     <View style={styles.container}>
@@ -79,14 +110,46 @@ const DashboardScreen = () => {
           color="#fff"
           onPress={() => {
             setIsDrawerOpen(true);
-            navigation.dispatch(DrawerActions.openDrawer( ));
+            navigation.dispatch(DrawerActions.openDrawer());
           }}
-        />
+          />
       </View>
       <ImageBackground
         source={require("../assets/esccoter1.png")}
         style={styles.BgImage}
-      >
+        >
+        {loading ? (
+          <Text>Loading...</Text>
+        ) : (
+            <FlatList
+              ScrollView
+            data={users}
+            keyExtractor={({ id }, index) => id}
+            renderItem={({ item }) => (
+              <Card>
+                <Card.Title>{item.name}</Card.Title>
+                <Card.Divider />
+                <Text style={{ marginBottom: 10 }}>{item.serialNumber}</Text>
+                <Text style={{ marginBottom: 10 }}>{item.latitude}</Text>
+                <Text style={{ marginBottom: 10 }}>{item.longitude}</Text>
+                <Text style={{ marginBottom: 10 }}>{item.battery}</Text>
+                <Text style={{ marginBottom: 10 }}>{item.status}</Text>
+
+                <Button
+                  icon={<Icon name="code" color="#ffffff" />}
+                  title="Reserver Now"
+                  buttonStyle={{
+                    borderRadius: 0,
+                    marginLeft: 0,
+                    marginRight: 0,
+                    marginBottom: 0,
+                  }}
+
+                />
+              </Card>
+            )}
+          />
+          )}
       </ImageBackground>
     </View>
   );

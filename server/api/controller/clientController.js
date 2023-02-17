@@ -9,7 +9,7 @@ const bcrypt = require("bcryptjs");
 
 const registerClient = asyncHandler(async (req, res) =>
 {
-  const { fullName, email, password,phoneNumber } = req.body;
+  const { fullName, email, password } = req.body;
   
 
   //   check if any of the fields are empty
