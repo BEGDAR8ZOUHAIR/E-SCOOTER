@@ -36,40 +36,42 @@ const DashboardScreen = () => {
     navigation.dispatch(DrawerActions.openDrawer());
   };
 
-  const renderScooter = ({ item }) => {
-    return <ScooterCard scooter={item} />;
-  };
+ const renderScooter = ({ item }) => {
+   return <ScooterCard key={item.id} scooter={item} />;
+ };
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Dashboard</Text>
-        <Icon name="menu" color="#fff" onPress={openDrawer} />
-      </View>
-      <ImageBackground
-        source={require("../assets/esccoter1.png")}
-        style={styles.bgImage}
-      >
-        {isLoading ? (
-          <Text style={styles.loadingText}>Loading...</Text>
-        ) : (
-          <ScrollView
-            style={styles.scrollView}
-            ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-            ListEmptyComponent={() => (
-              <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <Text>No items to display</Text>
-              </View>
-            )}
-          >
-            {scooters.map((scooter) => (
-              <ScooterCard key={scooter.id} scooter={scooter} />
-            ))}
-          </ScrollView>
-        )}
-      </ImageBackground>
-    </View>
-  );
+ return (
+   <View style={styles.container}>
+     <View style={styles.header}>
+       <Text style={styles.title}>Dashboard</Text>
+       <Icon name="menu" color="#fff" onPress={openDrawer} />
+     </View>
+     <ImageBackground
+       source={require("../assets/esccoter1.png")}
+       style={styles.bgImage}
+     >
+       {isLoading ? (
+         <Text style={styles.loadingText}>Loading...</Text>
+       ) : (
+         <ScrollView
+           style={styles.scrollView}
+           ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+           ListEmptyComponent={() => (
+             <View style={{ alignItems: "center", justifyContent: "center" }}>
+               <Text>No items to display</Text>
+             </View>
+           )}
+           keyExtractor={(item) => item.id.toString()}
+         >
+           {scooters.map((scooter, index) => (
+             <ScooterCard key={`${index}-${scooter.id}`} scooter={scooter} />
+           ))}
+         </ScrollView>
+       )}
+     </ImageBackground>
+   </View>
+ );
+
 };
 
 const ScooterCard = ({ scooter }) => {
