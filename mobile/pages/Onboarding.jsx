@@ -36,8 +36,8 @@ const OnboardingScreen = ({navigation}) => {
     return (
         
       <Onboarding
-          onSkip={() => navigation.replace('Nav')}
-          onDone={() => navigation.navigate('Nav')}
+          onSkip={() => navigation.replace('Login')}
+          onDone={() => navigation.navigate('Login')}
           SkipButtonComponent={Skip}
           NextButtonComponent={Next}
           DoneButtonComponent={Done}

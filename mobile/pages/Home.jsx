@@ -67,23 +67,23 @@ const Map = () => {
     latitudeDelta: LATITUDE_DELTA,
     longitudeDelta: LONGITUDE_DELTA,
   });
- const [markers, setMarkers] = useState([]);
+  // const [markers, setMarkers] = useState([]);
 
   const onRegionChange = (region) => {
     setRegion(region);
   };
 
-  useEffect(() => {
-    async function fetchMarkers() {
-      const response = await fetch(
-        "http://http://192.168.9.30:5000/client/scooters"
-      );
-      const text = await response.text();
-      const data = JSON.parse(text);
-      setMarkers(data);
-    }
-    fetchMarkers();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchMarkers() {
+  //     const response = await fetch(
+  //       "http://http://192.168.9.30:5000/client/scooters"
+  //     );
+  //     const text = await response.text();
+  //     const data = JSON.parse(text);
+  //     setMarkers(data);
+  //   }
+  //   fetchMarkers();
+  // }, []);
 
   return (
     <View style={styles.container}>
@@ -94,17 +94,25 @@ const Map = () => {
         region={region}
         onRegionChange={onRegionChange}
       >
-        {markers.map((marker) => (
+        {/* {markers.map((marker) => (
           <Marker
             key={marker.id}
             coordinate={{
               latitude: marker.latitude,
               longitude: marker.longitude,
             }}
-            title={marker.name}
-            description={marker.status}
+            title={marker.nom}
+            description={marker.description}
           />
-        ))}
+        ))} */}
+
+        <Marker
+          coordinate={{
+            latitude: region.latitude,
+            longitude: region.longitude,
+          }}
+          title={"Current Location"}
+        />
         
       </MapView>
       <View style={styles.buttonContainer}>

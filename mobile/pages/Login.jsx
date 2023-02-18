@@ -18,7 +18,7 @@ const LoginScreen = () => {
 
     const handleLogin = async () => {
         try {
-          const res = await fetch("http://192.168.9.30:5000/client/login", {
+          const res = await fetch("http://192.168.43.154:5000/client/login", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -35,7 +35,7 @@ const LoginScreen = () => {
           if (data.error) {
             Alert.alert("Error", data.error, [{ text: "OK" }]);
           } else {
-            navigation.navigate("Home");
+            navigation.navigate("Nav");
           }
         } catch (err) {
           console.log(err);

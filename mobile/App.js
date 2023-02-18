@@ -5,6 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native';
 import Onboarding from './pages/Onboarding';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import Nav from './components/Nav';
 
 const Stack = createStackNavigator();
@@ -27,7 +29,20 @@ export default function App()
             options={{
               headerShown: false
             }}
-            
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={Register}
+            options={{
+              headerShown: false
+            }}
           />
            <Stack.Screen
           name="Nav"
